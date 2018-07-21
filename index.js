@@ -4,6 +4,9 @@ var dao = require('./dao.js')
 var app = express()
 var port = process.env.PORT || 8081
 
+var cors = require('cors'); 
+app.use(cors());
+
 app.use('/user/:id', function (req, res, next) {
   console.log('Request Type:', req.method)
   res.send('UserId is: ' + req.params.id)
