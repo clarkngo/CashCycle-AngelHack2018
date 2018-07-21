@@ -10,7 +10,7 @@ app.use('/user/:id', function (req, res, next) {
 })
 
 app.get('/job/', function(req, res, next) {
-  res.send(dao.getjobs())
+  res.send(dao.getAvailableJobs())
 })
 
 app.get('/job/:jobId', function(req, res, next) {

@@ -3,12 +3,12 @@ var jobs = [
     {
         'id': '1',
         'startingLocation': {
-            'lat': 0,
-            'long': 0
+            'lat': 47.606581,
+            'long': -122.336453
         },
         'destingationLocation': {
-            'lat': 1,
-            'long': 1
+            'lat': 47.611634,
+            'long': -122.349441
         },
         'reward': 1.52,
         'status': 'AVAILABLE'
@@ -16,15 +16,28 @@ var jobs = [
     {
         'id': '2',
         'startingLocation': {
-            'lat': 2,
-            'long': 2
+            'lat': 47.620133,
+            'long': -122.349436
         },
         'destingationLocation': {
-            'lat': 4,
-            'long': 4
+            'lat': 47.611634,
+            'long': -122.349441
         },
-        'reward': 1.52,
+        'reward': 1.24,
         'status': 'AVAILABLE'
+    },
+    {
+        'id': '3',
+        'startingLocation': {
+            'lat': 47.620133,
+            'long': -122.349436
+        },
+        'destingationLocation': {
+            'lat': 47.611634,
+            'long': -122.349441
+        },
+        'reward': 1.99,
+        'status': 'TAKEN'
     }
 ]
 
@@ -38,6 +51,10 @@ module.exports = {
         return jobs
     },
 
+    getAvailableJobs() {
+        return this.getjobs().filter(job => job.status == 'AVAILABLE')  
+      },
+
     getjob(targetJobId) {
         console.log("dao.getjob | targetJobId: " + targetJobId)
         for (var i = 0; i < jobs.length; i++) {
@@ -48,5 +65,9 @@ module.exports = {
             }
         }
         return null
+    },
+
+    updateJob(targetJobId, newJobDefinitoin) {
+
     }
 }
