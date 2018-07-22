@@ -1,4 +1,5 @@
 var express = require('express')
+var path = require('path') 
 var dao = require('./dao.js')
 dao.populateExampleJobs()
 
@@ -8,6 +9,10 @@ var port = process.env.PORT || 8081
 var cors = require('cors'); 
 app.use(cors());
 app.use(express.json());
+
+app.get('/',function(req,res){
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.get('/user/:id', function (req, res, next) {
   console.log('Request Type:', req.method)

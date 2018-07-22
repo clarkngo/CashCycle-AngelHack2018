@@ -13,36 +13,8 @@ var jobs = [
         },
         'reward': 1.52,
         'status': 'AVAILABLE',
-        'owner': 'Ofo',
+        'owner': 'OFO',
         'worker': null
-    },
-    {
-        'id': '2',
-        'startingLocation': {
-            'lat': 47.620133,
-            'long': -122.349436
-        },
-        'destinationLocation': {
-            'lat': 47.611634,
-            'long': -122.349441
-        },
-        'reward': 1.24,
-        'status': 'AVAILABLE',
-        'owner': 'Lime',
-        'worker': null
-    },
-    {
-        'id': '3',
-        'startingLocation': {
-            'lat': 47.620133,
-            'long': -122.349436
-        },
-        'destinationLocation': {
-            'lat': 47.611634,
-            'long': -122.349441
-        },
-        'reward': 1.99,
-        'status': 'TAKEN'
     }
 ]
 
@@ -136,7 +108,97 @@ module.exports = {
             },
             1.24,
             'AVAILABLE',
-            'Lime',
+            'OFO',
+            null
+        )
+
+        this.addjob(
+            {
+                'lat': 47.609629,
+                'long': -122.326863
+            },
+            {
+                'lat': 47.602717,
+                'long': -122.337964
+            },
+            1.00,
+            'AVAILABLE',
+            'OFO',
+            null
+        )
+
+        this.addjob(
+            {
+                'lat': 47.615370,
+                'long': -122.326817
+            },
+            {
+                'lat': 47.616243,
+                'long': -122.354746
+            },
+            2.00,
+            'AVAILABLE',
+            'OFO',
+            null
+        )
+
+        this.addjob(
+            {
+                'lat': 47.640220,
+                'long': -122.305819
+            },
+            {
+                'lat': 47.628774,
+                'long': -122.314631
+            },
+            0.70,
+            'AVAILABLE',
+            'OFO',
+            null
+        )
+
+        this.addjob(
+            {
+                'lat': 47.630214,
+                'long': -122.320235
+            },
+            {
+                'lat': 47.628717,
+                'long': -122.314463
+            },
+            0.70,
+            'AVAILABLE',
+            'OFO',
+            null
+        )
+
+        this.addjob(
+            {
+                'lat': 47.624494,
+                'long': -122.346462
+            },
+            {
+                'lat': 47.616498,
+                'long': -122.353833
+            },
+            3.00,
+            'AVAILABLE',
+            'OFO',
+            null
+        )
+
+        this.addjob(
+            {
+                'lat': 47.617231,
+                'long': -122.343203
+            },
+            {
+                'lat': 47.616498,
+                'long': -122.353833
+            },
+            1.95,
+            'AVAILABLE',
+            'OFO',
             null
         )
     }
