@@ -1,210 +1,597 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Heatmaps</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 50%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-      #floating-panel {
-        background-color: #fff;
-        border: 1px solid #999;
-        left: 25%;
-        padding: 5px;
-        position: absolute;
-        top: 10px;
-        z-index: 5;
-      }
-      #floating-panel {
-        position: absolute;
-        top: 20px;
-        left: 25%;
-        z-index: 5;
-        background-color: rgb(255,255,255);
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-  }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style2.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-blue.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
+    <script>
+
+
+
+
+    </script>
+
+
   </head>
+
   <body>
-    <div id="floating-panel">
-      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-      <button onclick="changeGradient()">Change gradient</button>
-      <button onclick="changeRadius()">Change radius</button>
-      <button onclick="changeOpacity()">Change opacity</button>
+
+
+
+    <!-- LEFT MENU VIEW -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">CashCycler</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Menu</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" id="show-dialog">Find</a>
+          <a class="mdl-navigation__link" href="">Cash Out</a>
+          <a class="mdl-navigation__link" href="">Notifications</a>
+          <a class="mdl-navigation__link" href="">Help</a>
+          <a class="mdl-navigation__link" href="">Setting</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+
+    <!-- BEGIN CONTENT -->
+
+
+  <div id="map"></div>
+
+  <div id="demo"></div>
+   <div id="myDIV">
+     <!-- <button onclick="bikeId(globalId), startRide(), startDemo(), onBikes(), changeLocation()">Start Ride</button> -->
+     <p id="demo"></p>
+   </div>
+
+
+    <select id="mode">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+
+    <!-- one bike selected -->
+    <div>Distance: <p id="distance"></p></div>
+    <div>Duration: <p id="duration"></p></div>
+<button type="button" class="mdl-button">Show Dialog</button>
+
+
+<!-- DIALOG SECTION FOR JOB LIST -->
+<button type="button" class="mdl-button show-modal">Show Modal</button>
+
+
+<!-- THIS IS THE MAIN DIALOG JOB LIST  -->
+<!-- DONT MESS THIS UP  -->
+<dialog id="dialog" class="mdl-dialog">
+  <h3 class="mdl-dialog__title">JOB LIST</h3>
+
+    <div class="dialog-job-wrapper">
+          <!-- DIALOG CONTENT -->
+                <table class="dialog-job-list mdl-data-table mdl-data-table--selectable" id="dialog-job-list">
+                  <thead>
+                    <tr>
+                      <th class="mdl-data-table__cell--non-numeric">Distance</th>
+                      <th class="mdl-data-table__cell--non-numeric">Reward</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dialog-table-body">
+
+                  </tbody>
+                </table>
     </div>
-    <div id="map"></div>
-    <p class="message box">
-  The message will go here
-</p> <!--
-    <p>Take a look at <a href="https://whispering-stream-27392.herokuapp.com/job/" target="_blank">json_demo_array.txt</a></p> -->
-  <button id="getMessage">
-    Get Message
+
+
+
+  <div class="mdl-dialog__actions">
+    <!-- Raised button with ripple -->
+    <button id="close" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+      Cancel
+    </button>
+
+  </div>
+</dialog>
+
+
+<!-- DIALOG JOB PREVIEW FOR ROW ONE -->
+
+<dialog id="dialog-jobOne" class="mdl-dialog">
+
+    <table class="table-jobOne">
+      <tr>
+        <td><img class="bike-img" src="bike.png"></td>
+        <td id="jobOne-distance"></td>
+        <td id="jobOne-reward"></td>
+        <td id="time-limit">Time-Limit: 15 minutes</td>
+        <td>
+
+        </td>
+      </tr>
+    </table>
+
+    <div style="margin: -15px;">
+
+        <button onclick="bikeId(globalId), startRide(), startDemo(), onBikes(), changeLocation()" id="accept-from-list-row-one" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Accept this Job
+        </button>
+
+        <button id="back-to-dialog" class="cancel-button mdl-button">
+          Back
+        </button>
+
+    </div>
+
+    <!-- <button id="back-to-dialog" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+    Back
+    </button> -->
+
+</dialog>
+
+
+
+
+
+
+<!-- DIALOG FOR JOB ROUTE PREVIEW -->
+<!-- COE BACK GOR THIS DIALLGO -->
+
+<dialog id="dialog-job-preview" class="mdl-dialog">
+  <table>
+    <tr>
+      <td class="gray-text">
+        <p>You have 15 minutes left.</p>
+      </td>
+    </tr>
+    <tr>
+        <td> Distance</td>
+        <td>Reward</td>
+    </tr>
+    <tr>
+      <!-- <td><img class="img-icon-small" src="help.png"></td>
+      <td><img class="img-icon-small" src="cancel.png"></td> -->
+    </tr>
+  </table>
+
+</dialog>
+
+
+
+<dialog id="congrats" class="mdl-dialog">
+
+  <p class="final-text">Congratulations!</h2>
+  <p class="final-subtext">Job well done</h5>
+
+  <p>
+
+  <button id="exit-program" class="mdl-button">
+    keep it on
   </button>
-   <div id="demo"></div> 
-    
-<!--
-<script>
-     var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        document.getElementById("demo").innerHTML = myArr[0];
-        alert(myArr);
-    }
-};
-xmlhttp.open("GET", "https://whispering-stream-27392.herokuapp.com/job/", true);
-xmlhttp.send();
-</script> -->
-<header>
-</header>
-<section>
-</section>
-<script>
-     document.addEventListener('DOMContentLoaded',function(){
-      document.getElementById('getMessage').onload=function(){
-        req=new XMLHttpRequest();
-      req.open("GET",'https://whispering-stream-27392.herokuapp.com/job/',true);
-      req.send();
-      req.onload=function(){
-      json=JSON.parse(req.responseText);
-      document.getElementsByClassName('message')[0].innerHTML=JSON.stringify(json);
-      var newArr = JSON.stringify(json);
-  };
-        
-      };
-    });
-    var header = document.querySelector('header');
-    var section = document.querySelector('section');
-    var requestURL = 'https://whispering-stream-27392.herokuapp.com/job/';
-    var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send(); 
-      request.onload = function() {
-      var myJson = request.response;
+</dialog>
+
+<!-- END CONTENT -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </main>
+</div>
+
+
+
+
+
+
+
+
+    <script>
+
+
+
+      var requestURL = 'https://whispering-stream-27392.herokuapp.com/job/';
+      var request = new XMLHttpRequest();
+      request.open('GET', requestURL);
+      request.responseType = 'json';
+      request.send();
+
+      var unmodifiedJson = [];
       var xArrSta = [];
       var yArrSta = [];
       var xArrDes = [];
       var yArrDes = [];
-  for (var i = 0; i < myJson.length; i++) {
-    xArrSta.push(myJson[i]['startingLocation']['lat']);
-    yArrSta.push(myJson[i]['startingLocation']['long']);
-    xArrDes.push(myJson[i]['destinationLocation']['lat']);
-    yArrDes.push(myJson[i]['destinationLocation']['long']);
-}  
-    console.log(xArrSta);  
-    console.log(yArrSta);
-    console.log(xArrDes);  
-    console.log(yArrDes);
-}
-      var map, heatmap;
+      var arrId = [];
+
+      var distanceList = [];
+      var rewardList = [];
+
+      var directionsDisplay = null;
+      var directionsService = null;
+      request.onload = function() {
+        var myJson = request.response;
+
+        for (var i = 0; i < myJson.length; i++) {
+          unmodifiedJson.push(myJson[i]);
+          xArrSta.push(myJson[i]['startingLocation']['lat']);
+          yArrSta.push(myJson[i]['startingLocation']['long']);
+          xArrDes.push(myJson[i]['destinationLocation']['lat']);
+          yArrDes.push(myJson[i]['destinationLocation']['long']);
+          arrId.push(myJson[i]['id']);
+
+          distanceList.push(myJson[i]['distance']);
+          rewardList.push(myJson[i]['reward']);
+          makeBike(xArrSta[i], yArrSta[i], arrId[i]);
+        }
+
+        chooseJob("1");
+         // populateRewardList(rewardList);
+         // populateDistanceList(distanceList);
+
+         populateList(rewardList, distanceList);
+
+         console.log(rewardList);
+
+         populateFirstJob(unmodifiedJson[0]);
+
+
+      }
+
+
+      var globalId = "1";
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
-          center: {lat: 47.655970, lng: -122.309206},
+          center: {lat: changingLat, lng: changingLon},
         });
-        heatmap = new google.maps.visualization.HeatmapLayer({
-          data: getPoints(47.655321, -122.308584),
-          map: map
-        });
-        var marker = new google.maps.Marker({
-          position: {lat: 47.655970, lng: -122.309206},
-          map: map,
-          title: 'Hello World!'
-        });
-        var marker = new google.maps.Marker({
-          position: {lat: 47.655976, lng: -122.309206},
-          map: map,
-          title: 'Hello World!'
-        });
-        for (var j = 0; j < 10; j++) {
-          makeBike(47.655976, -122.309206);
-        }
+
+
+
       }
-      function makeBike(latitude, longitude) {
-        var image = 'bicycle.png' ;
-        var icon = {
-          url: 'bicycle.png', // url
-          scaledSize: new google.maps.Size(50, 50), // scaled size
+
+      var globalId = "1";
+      function startRide() {
+        changeJobStatus(globalId, "IN PROGESS", "Johnny Cash");
+      }
+      function endRide() {
+        changeJobStatus(globalId, "COMPLETED", "Johnny Cash");
+      }
+
+      function changeJobStatus(jobId, status, worker) {
+        // need to send id, status and worker
+
+          var data = {};
+          var url = "https://whispering-stream-27392.herokuapp.com/job/" + jobId;
+          data.id = jobId;
+          data.status = status;
+          data.worker = worker;
+          var json = JSON.stringify(data);
+          var xhr = new XMLHttpRequest();
+          xhr.open("PATCH", url, true);
+          xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+          xhr.onload = function()
+            {
+              var users = JSON.parse(xhr.responseText);
+              if (xhr.readyState == 4 && xhr.status == "201")
+              {
+                console.table(users);
+              } else
+              {
+                console.error(users);
+              }
+          };
+          xhr.send(json);
+
+      }
+
+     function chooseJob(id) {
+        for (var m = 0; m < arrId.length; m++) {
+            if (id === arrId[m]) {
+              staLocLat = unmodifiedJson[m]['startingLocation']['lat'];
+              staLocLong = unmodifiedJson[m]['startingLocation']['long'];
+              endLocLat = unmodifiedJson[m]['destinationLocation']['lat'];
+              endLocLong = unmodifiedJson[m]['destinationLocation']['long'];
+            }
+
+        }
+          directionsDisplay.setMap(map);
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+      }
+
+
+      function makeBike(latitude, longitude, id) {
+        var image = 'bicycle.png';
+          if (onBike) {
+              image = 'rDot.png';
+          }
+          if (count > 10) {
+            image = 'green-marker.png';
+          }
+          var size = new google.maps.Size(54, 54);
+          if (count > 10) {
+              size = new google.maps.Size(60, 75)
+
+          }
+          var icon = {
+          url: image, // url
+          scaledSize: size, // scaled size
           origin: new google.maps.Point(0,0), // origin
           anchor: new google.maps.Point(0, 0) // anchor
         };
+
         var Bike = new google.maps.Marker({
           position: {lat: latitude, lng: longitude},
           map: map,
           zoom: 200,
           icon: icon
         });
+
+        if (!directionsDisplay) {
+          directionsDisplay = new google.maps.DirectionsRenderer;
+        }
+
+        if (!directionsService) {
+          directionsService = new google.maps.DirectionsService;
+        }
+
+
         Bike.addListener('click', function() {
+
+
           map.setZoom(18);
+          flag = true;
           map.setCenter(Bike.getPosition());
+          hideStartRide();
+          bikeId(id);
+
+          for (var k = 0; k < unmodifiedJson.length; k++) {
+
+            if (id === unmodifiedJson[k]['id']) {
+              staLocLat = unmodifiedJson[k]['startingLocation']['lat'];
+              staLocLong = unmodifiedJson[k]['startingLocation']['long'];
+              endLocLat = unmodifiedJson[k]['destinationLocation']['lat'];
+              endLocLong = unmodifiedJson[k]['destinationLocation']['long'];
+            }
+          }
+          directionsDisplay.setMap(map);
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+          document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
         });
       }
-      function toggleHeatmap() {
-        heatmap.setMap(heatmap.getMap() ? null : map);
+
+      function bikeId(id) {
       }
-      function changeGradient() {
-        var gradient = [
-          // 'rgba(0, 255, 255, 0)',
-          // 'rgba(0, 255, 255, 1)',
-          // 'rgba(0, 191, 255, 1)',
-          // 'rgba(0, 127, 255, 1)',
-          // 'rgba(0, 63, 255, 1)',
-          // 'rgba(0, 0, 255, 1)',
-          // 'rgba(0, 0, 223, 1)',
-          // 'rgba(0, 0, 191, 1)',
-          // 'rgba(0, 0, 159, 1)',
-          // 'rgba(0, 0, 127, 1)',
-          // 'rgba(63, 0, 91, 1)',
-          // 'rgba(127, 0, 63, 1)',
-          // 'rgba(191, 0, 31, 1)',
-          'rgba(255, 0, 0, 1)'
-        ]
-        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+
+      function hideStartRide() {
+        var x = document.getElementById("myDIV");
+          if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+             x.style.display = "none";
+          }
       }
-      function changeRadius() {
-        heatmap.set('radius', heatmap.get('radius') ? null : 60);
+
+      var distance = 0;
+      var duration = 0;
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var selectedMode = document.getElementById('mode').value;
+        directionsService.route({
+          origin: {lat: staLocLat, lng: staLocLong},
+          destination: {lat: endLocLat, lng: endLocLong},
+          travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+
+            distance = response['routes'][0]['legs'][0]['distance']['value'];
+
+            duration = response['routes'][0]['legs'][0]['duration']['value'];
+
+            document.getElementById('distance').innerHTML = distance;
+            document.getElementById('duration').innerHTML = duration;
+
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+
+        });
       }
-      function changeOpacity() {
-        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.5);
+
+      //hard coding for the presentation
+      var route = [ 47.619899, -122.347054, 47.619854, -122.347557, 47.619884, -122.348127,
+      47.619894, -122.348529, 47.619967, -122.348980, 47.620192, -122.349318, 47.620510, -122.349125];
+      var count = 0;
+      var onBike = false;
+      var changingLat = 47.619780;
+      var changingLon = -122.346432;
+
+
+      function changeLocation() {
+        console.log(count/2-1 + " " + count/2);
+        changingLat = route[count];
+        changingLon = route[count+1];
+        map.setCenter({lat: changingLat, lng: changingLon});
       }
-      // Heatmap data: 500 Points
-      function getPoints(latitude, longitude) {
-        return [
-          new google.maps.LatLng(latitude, longitude)
-        ];
+      function onBikes() {
+        onBike = true;
+        console.log(onBike);
       }
+      function startDemo() {
+        count = 0;
+        setInterval(updatePos, 1200);
+      }
+      function updatePos() {
+         // if (oldBikeMarker) {
+         //    oldBikeMarker.position.lat = 0;
+         // }
+        if (count <= 12) {
+          changeLocation();
+          makeBike(route[count], route[count+1], "1");
+        }
+
+        if (count == 16) {
+
+          // clearInterval()
+          // Placeholder for actual page
+          jobAvailable();
+
+          //DIALOG POPS UP THAT WILL SAY JOB Complete
+          $("#dialog-job-preview").hide();
+          $("#congrats").show();
+
+        }
+        if (count < 17) {
+          count += 2 ;
+        }
+      }
+
+
+      function jobAvailable() {
+        changeJobStatus(globalId, "AVAILABLE", "Johnny Cash");
+      }
+
+
+
+
+
+
+        // function populateRewardList(rewardList) {
+        //   document.getElementById('cellOne').innerHTML = rewardList[0];
+        //   document.getElementById('cellTwo').innerHTML = rewardList[1];
+        //   document.getElementById('cellThree').innerHTML = rewardList[2];
+        //   document.getElementById('cellFour').innerHTML = rewardList[3];
+        //   document.getElementById('cellFive').innerHTML = rewardList[4];
+        //   document.getElementById('cellSix').innerHTML = rewardList[5];
+        //   document.getElementById('cellSeven').innerHTML = rewardList[6];
+        // }
+
+        function populateList(rewardList, distanceList){
+
+          var table = document.getElementById('dialog-table-body');
+
+          for(var i=0;i<rewardList.length; i++){
+
+
+                var rowRef = table.insertRow(i);
+                console.log(rowRef.id = "list-row" + i);
+
+
+                // var rowRef = document.getElementById('rowOne');
+                var cellReward   = rowRef.insertCell(0);
+                var textReward  = document.createTextNode(rewardList[i])
+                cellReward.appendChild(textReward);
+                cellReward.setAttribute("class", "mdl-data-table__cell--non-numeric");
+
+
+                var cellDistance   = rowRef.insertCell(0);
+                var textDistance  = document.createTextNode((Math.round(distanceList[i]/100)/10) + " miles");
+                cellDistance.appendChild(textDistance);
+                cellDistance.setAttribute("class", "mdl-data-table__cell--non-numeric");
+            }
+        }
+
+        // function populateDistanceList(distanceList) {
+        //   document.getElementById('distanceTwo').innerHTML = distanceList[1];
+        //   document.getElementById('distanceThree').innerHTML = distanceList[2];
+        //   document.getElementById('distanceFour').innerHTML = distanceList[3];
+        //   document.getElementById('distanceFive').innerHTML = distanceList[4];
+        //   document.getElementById('distanceSix').innerHTML = distanceList[5];
+        //   document.getElementById('distanceSeven').innerHTML = distanceList[6];
+        // }
+        //
+        function populateFirstJob(a){
+          document.getElementById('jobOne-distance').innerHTML = a.distance;
+          document.getElementById('jobOne-reward').innerHTML = a.reward;
+        }
+
+        // chelseas code
+
+        $(document).ready(function(){
+            $("#show-dialog").click(function(){
+                $("#dialog").show();
+                $('.mdl-layout__drawer, .mdl-layout__obfuscator').removeClass( 'is-visible' );
+                $("#dialog-jobOne").hide();
+                $("#dialog-job-preview").hide();
+              });
+
+
+
+            $("body").on("click", "#list-row0", function(){
+              $("#dialog").hide();
+              $("#dialog-jobOne").show();
+            });
+
+            $("body").on("click", "#list-row1", function(){
+              $("#dialog").hide();
+              $("#dialog-jobTwo").show();
+            });
+
+            $("#accept-from-list-row-one").click(function(){
+              $("#dialog").hide();
+              $("#dialog-jobOne").hide();
+              $("#dialog-job-preview").show();
+
+            });
+
+            $("#back-to-dialog").click(function(){
+              $("#dialog").show();
+              $("#dialog-jobOne").hide();
+            });
+
+            $("#close").click(function(){
+              $("#dialog").hide();
+            });
+
+            $("#exit-program").click(function(){
+              $("#dialog-job-preview").hide();
+              $("#congrats").hide();
+              initMap();
+            });
+
+
+
+          });
+
+
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOImJNuKS8gj-RTiHgH9gnU1-Skljj4fI&libraries=visualization&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlkmKw0QQj3jcYFfp4u88K1EpHbYJpRPc&libraries=visualization&callback=initMap">
     </script>
   </body>
 </html>

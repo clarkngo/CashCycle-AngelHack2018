@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css?family=Signika');
+
+*{
+  font-family: 'Signika', sans-serif;
+  font-weight: 300;
+}
+
+body{
+
+}
+
+#map {
+
+  height:100vh;
+}
+/* Optional: Makes the sample page fill the window. */
+
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+#floating-panel {
+  background-color: #fff;
+  border: 1px solid #999;
+  left: 25%;
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  z-index: 5;
+}
+#floating-panel {
+  position: absolute;
+  top: 20px;
+  left: 25%;
+  z-index: 5;
+  background-color: rgb(255,255,255);
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+#dialog{
+  position: absolute;
+  top:30px;
+  width: 70%;
+  border-radius: 10px;
+  z-index:100;
+  overflow:hidden;
+}
+
+.dialog-job-wrapper{
+  box-sizing: border-box;
+  padding: 0 10%;
+  width: 100%;
+}
+
+table.dialog-job-list{
+  /* table */
+  width: 100%;
+  border-color: none;
+}
+
+.mdl-color-border{
+  border: none;
+}
+
+#dialog-jobOne{
+  /* preview for the first job from the table */
+  height: 60px;
+  position: absolute;
+  top:110px;
+  width: 75%;
+  border-radius: 10px;
+  z-index:100;
+  padding-top: 0;
+}
+
+#dialog-job-preview{
+  height: 60px;
+  position: absolute;
+  top: 490px;
+  width: 50%;
+  border-radius: 10px;
+  z-index: 100;
+  border: #DBDBDB 1px solid;
+}
+
+#close{
+  /* this closes the main dialog box */
+  float: left;
+  font-size: 10pt;
+}
+
+.float-left{
+  float:left;
+}
+
+#time-limit{
+  font-size: 1.7vw;
+  color: #c9c9c9;
+}
+
+.table-jobOne{
+  box-sizing: border-box;
+  margin:0 5%;
+  width: 100%;
+  font-size: 17pt;
+  border-collapse: collapse;
+}
+
+
+.table-jobOne td{
+  padding: 20px;
+}
+
+#accept-from-list-row-one{
+  width: 100%;
+  border-radius: 5px;
+  font-size:15pt;
+  height: 50px;
+}
+
+.mdl-button{
+  background: #1BAD7F;
+}
+
+.bike-img{
+  width:80px;
+}
+
+
+.cancel-button{
+  margin: 0 auto;
+  width: 100%;
+  background:white;
+  text-align: center;
+}
+
+.gray-text{
+  text-transform: uppercase;
+  font-size: 13pt;
+  color: #7E7E7E;
+  text-align: center;
+  width: 100%;
+}
+
+.img-icon-small{
+  width: 50px;
+  opacity: .5;
+}
+
+.icon-padding{
+
+}
+
+
+#congrats{
+  height: 250px;
+  position: absolute;
+  top: 200px;
+  width: 50%;
+  border-radius: 10px;
+  z-index: 100;
+  display: block;
+}
+
+.final-text{
+  font-family: 'Signika';
+  font-weight: 600;
+  font-size: 18pt;
+  color: #577399;
+  text-align: center;
+  margin: none;
+}
+
+.final-subtext{
+  margin: none;
+  line-height: normal;
+  text-align: center;
+  font-size: 12pt;
+  color:#7E7E7E;
+}
+
+.pig{
+  width: 100px;
+}
