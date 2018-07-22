@@ -167,32 +167,57 @@ table.dialog-job-list{
 
 
 #congrats{
-  height: 250px;
+  height: 230px;
   position: absolute;
   top: 200px;
   width: 50%;
   border-radius: 10px;
   z-index: 100;
-  display: block;
 }
 
 .final-text{
   font-family: 'Signika';
   font-weight: 600;
-  font-size: 18pt;
+  font-size: 20pt;
   color: #577399;
   text-align: center;
   margin: none;
 }
 
 .final-subtext{
-  margin: none;
   line-height: normal;
   text-align: center;
-  font-size: 12pt;
+  font-size: 11pt;
   color:#7E7E7E;
 }
 
-.pig{
-  width: 100px;
+
+
+.exit-content{
+  display: block;
+  margin: 0 auto;
+  padding: 0 20px;
+
+}
+
+#moneybag{
+  width: 85px;
+  display: block;
+}
+
+h3{
+
+}
+
+h5{
+  padding:0;
+  margin: 0;
+}
+.tbl{
+  border-collapse: collapse;
+}
+
+.txt{
+  font-size: 15pt;
+  text-align: center;
 }

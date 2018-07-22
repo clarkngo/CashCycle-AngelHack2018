@@ -122,9 +122,9 @@
     <table class="table-jobOne">
       <tr>
         <td><img class="bike-img" src="bike.png"></td>
-        <td id="jobOne-distance"></td>
+        <td>0.62 miles</td>
         <td id="jobOne-reward"></td>
-        <td id="time-limit">Time-Limit: 15 minutes</td>
+        <td>Time-Limit: 15 minutes</td>
         <td>
 
         </td>
@@ -158,36 +158,31 @@
 <!-- COE BACK GOR THIS DIALLGO -->
 
 <dialog id="dialog-job-preview" class="mdl-dialog">
-  <table>
-    <tr>
-      <td class="gray-text">
-        <p>You have 15 minutes left.</p>
-      </td>
-    </tr>
-    <tr>
-        <td> Distance</td>
-        <td>Reward</td>
-    </tr>
-    <tr>
-      <!-- <td><img class="img-icon-small" src="help.png"></td>
-      <td><img class="img-icon-small" src="cancel.png"></td> -->
-    </tr>
-  </table>
+
+
+        <p class="gray-text">You have 15 minutes left.</p>
+
+    <p class="txt">Distance: 0.6 miles   |
+            Reward: $1.52</p>
+
 
 </dialog>
 
 
 
 <dialog id="congrats" class="mdl-dialog">
+  <div class="exit-content">
+      <p class="final-text">Congratulations!</p>
+      <p class="final-subtext">Job well done</p>
 
-  <p class="final-text">Congratulations!</h2>
-  <p class="final-subtext">Job well done</h5>
 
-  <p>
-
-  <button id="exit-program" class="mdl-button">
-    keep it on
-  </button>
+      <div id-"center-btn" style="padding: 20px 35%;">
+        <img id="moneybag" style="margin: 10px auto;" src="moneybag.png">
+        <button style="min-width: 200px; border-radius: 20px;" id="exit-program" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent exit-button">
+          OK!
+        </button>
+      </div>
+  </div>
 </dialog>
 
 <!-- END CONTENT -->
@@ -256,7 +251,7 @@
           makeBike(xArrSta[i], yArrSta[i], arrId[i]);
         }
 
-        chooseJob("1");
+        // chooseJob("1");
          // populateRewardList(rewardList);
          // populateDistanceList(distanceList);
 
@@ -376,6 +371,8 @@
           map.setCenter(Bike.getPosition());
           hideStartRide();
           bikeId(id);
+
+          $("#dialog-jobOne").show();
 
           for (var k = 0; k < unmodifiedJson.length; k++) {
 
