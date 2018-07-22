@@ -14,7 +14,8 @@ var jobs = [
         'reward': 1.52,
         'status': 'AVAILABLE',
         'owner': 'OFO',
-        'worker': null
+        'worker': null,
+        'distance': 620
     }
 ]
 
@@ -26,6 +27,7 @@ module.exports = {
             'id': uuidv4(),
             'startingLocation': startingLocation,
             'destinationLocation': destinationlocation,
+            'distance': Math.round(1.4 * 110000 * Math.sqrt(Math.pow((startingLocation.lat - destinationlocation.lat),2) + Math.pow(startingLocation.long - destinationlocation.long,2))),
             'reward': reward,
             'status': status,
             'owner': owner,
