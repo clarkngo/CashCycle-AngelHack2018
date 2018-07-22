@@ -5,13 +5,17 @@ var jobs = [];
 module.exports = {
 
     addjob(startingLocation, destinationlocation, reward, status, owner, worker) {
-        newJobDefinition = 
+
+        distance = Math.round(1.4 * 110000 * Math.sqrt(Math.pow((startingLocation.lat - destinationlocation.lat),2) + Math.pow(startingLocation.long - destinationlocation.long,2)))
+        distancedBasedReward = (distance * 0.0002).toFixed(2)
+
+        newJobDefinition =
         {
             'id': uuidv4(),
             'startingLocation': startingLocation,
             'destinationLocation': destinationlocation,
-            'distance': Math.round(1.4 * 110000 * Math.sqrt(Math.pow((startingLocation.lat - destinationlocation.lat),2) + Math.pow(startingLocation.long - destinationlocation.long,2))),
-            'reward': reward,
+            'distance': distance,
+            'reward': distancedBasedReward,
             'status': status,
             'owner': owner,
             'worker': worker
