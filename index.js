@@ -10,10 +10,6 @@ var cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
-app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 app.get('/restart', function(req, res, next) {
   dao.populateExampleJobs()
   res.status(200).send('OK')
@@ -25,7 +21,7 @@ app.get('/user/:id', function (req, res, next) {
 })
 
 app.get('/job/', function(req, res, next) {
-  res.send(dao.getAvailableJobs())
+  res.send(dao.getAvailableJobs()) 
 })
 
 app.get('/job/:jobId', function(req, res, next) {
@@ -75,6 +71,8 @@ app.patch('/job/:jobId', function(req, res, next) {
   )
   res.send(req.body)
 })
+
+app.use(express.static(__dirname));
 
 var server = app.listen(port, function () {
    var host = server.address().address
