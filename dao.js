@@ -1,23 +1,6 @@
 const uuidv4 = require('uuid/v4');
 
-var jobs = [
-    {
-        'id': '1',
-        'startingLocation': {
-            'lat': 47.619780,
-            'long': -122.346432
-        },
-        'destinationLocation': {
-            'lat': 47.620467,
-            'long': -122.349254
-        },
-        'reward': 1.52,
-        'status': 'AVAILABLE',
-        'owner': 'OFO',
-        'worker': null,
-        'distance': 620
-    }
-]
+var jobs = [];
 
 module.exports = {
 
@@ -84,6 +67,26 @@ module.exports = {
     },
 
     populateExampleJobs() {
+
+        jobs = [
+            {
+                'id': '1',
+                'startingLocation': {
+                    'lat': 47.619780,
+                    'long': -122.346432
+                },
+                'destinationLocation': {
+                    'lat': 47.620467,
+                    'long': -122.349254
+                },
+                'reward': 1.52,
+                'status': 'AVAILABLE',
+                'owner': 'OFO',
+                'worker': null,
+                'distance': 620
+            }
+        ]
+        
         this.addjob(
             {
                 'lat': 47.606581,

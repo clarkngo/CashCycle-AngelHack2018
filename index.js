@@ -14,6 +14,11 @@ app.get('/',function(req,res){
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/restart', function(req, res, next) {
+  dao.populateExampleJobs()
+  res.status(200).send('OK')
+});
+
 app.get('/user/:id', function (req, res, next) {
   console.log('Request Type:', req.method)
   res.send('UserId is: ' + req.params.id)
