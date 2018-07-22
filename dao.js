@@ -14,7 +14,7 @@ var jobs = [
         'reward': 1.52,
         'status': 'AVAILABLE',
         'owner': 'Ofo',
-        'worker:': null
+        'worker': null
     },
     {
         'id': '2',
@@ -29,7 +29,7 @@ var jobs = [
         'reward': 1.24,
         'status': 'AVAILABLE',
         'owner': 'Lime',
-        'worker:': null
+        'worker': null
     },
     {
         'id': '3',
@@ -57,7 +57,7 @@ module.exports = {
             'reward': reward,
             'status': status,
             'owner': owner,
-            'worker:': worker
+            'worker': worker
         }
 
         jobs.push(newJobDefinition)
