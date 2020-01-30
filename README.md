@@ -66,7 +66,7 @@ So…to the drawing board!
 ## Whiteboarding
 Before we even started coding, we spent a few hours thinking about what the problem really was. We thought about it both from a social perspective and from the bike-sharing companies’ perspectives.
 
-![](/hackathon-projects/CashCycle-AngelHack2018/images/01.png "01")
+![](/CashCycle-AngelHack2018/images/01.png "")
 
 Instead of tackling the whole problem, we wanted to address a “specific” area in the problem. So here’s the process we went through:
 
