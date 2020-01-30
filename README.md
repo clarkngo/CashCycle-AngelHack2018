@@ -1,6 +1,6 @@
 # How my team rocked the AngelHack Seattle Hackathon
 
-https://www.freecodecamp.org/news/ghost/#/editor/post/5ceb785fe17b4228e0185bb7
+Read the article [here](https://www.freecodecamp.org/news/ghost/#/editor/post/5ceb785fe17b4228e0185bb7).
 
 This was my second time participating in a Hackathon, and it was a truly enriching experience! We were able to call APIs, connect to the back-end database, and build most of the app’s front-end logic and functionalities using JavaScript.
 
@@ -102,6 +102,8 @@ Have the bike-sharing companies use our services, and we get people to move bike
 ### Create User Stories
 We went from whiteboarding to a better visual layout using Figma.
 
+![](/images/02.png "")
+
 ### Pick the Best Technology
 We focused on the problem at hand and used the technology we thought was best to address it.
 
@@ -109,28 +111,47 @@ It was very tempting to integrate AWS Lambda, Agora, or Fit Bit because of the c
 But we knew that “forcing” a technology as a solution might not end well.
 
 ## Google Cloud APIs
+![](/images/03.png "")
 
 ### Back-end Server and Endpoint
 We hosted our data on Heroku and generated a JSON file.
 
+![](/images/04.png "")
+
 Our JSON endpoint assumes that the bike-sharing company provides us with the starting latitude and longitude and destination latitude and longitude, etc.
-Testing Google Map APIs
+### Testing Google Map APIs
 With the latitude and longitude values, we were able to create the route, point A and point B, and Bike Icon Markers.
+
+![](/images/05.png "")
 
 Clicking a Bike Icon would generate a blue path and two points, A and B. it also changes the zoom level to the midpoint of the blue path.
 
+![](/images/06.png "")
+
 We also have an option dropdown that changes mode to “walking” and the blue straight line will change to dotted and also reroute to the best “walking path”.
+
 At that point, we were done with coding the logic and functionalities. So on to the front end.
-Front-end User Interface
+
+## Front-end User Interface
 We made a responsive web design and created simple yet elegant dialog boxes.
+
+![](/images/07.png "")
 
 At the top left screen, we created a toggle button the shows the navigation bar. The navigation bar includes “find”, “cash out”, “notifications”, “help” and “settings”.
 
+![](/images/08.png "")
+
 Clicking “Find” will generate a list of jobs available and is an alternative to clicking a Bike Icon. Distance and Reward are shown in the list.
+
+![](/images/09.png "")
 
 Choosing a job from the Job List or clicking a Bike Icon will pop out a dialog box asking the user to accept the job. The dialog box also shows a summary of the distance and estimated time completion for the job selected.
 
+![](/images/10.png "")
+
 Clicking “Accept This Job” will start the trip. The map will be centered on the bike’s GPS. A dialog box will show remaining Distance and Reward for completing the Job.
+
+![](/images/11.png "")
 
 When the bike reaches the desired location, which is point B, adialog box will return a status that the Job has been completed!
 ## Code Snippets
@@ -242,25 +263,41 @@ Bike.addListener('click', function() {
 }
 ```
 makeBike is a function that generates the Bike Icon marker and also styles it. It uses the calculateAndDisplayRoute function to generate its blue path.
-When the coding was done, it was time to pitch!
+
+### When the coding was done, it was time to pitch!
+![](/images/12.png "")
 
 We delivered the pitch with energy. We made sure that it had a flow and connected one idea to the others.
 Presentation flow: Problem -> Problem with Numbers -> Present the App -> discuss the App as a solution -> demo.
 
+
+[![CashCycle @ AngelHack Seattle Hackathon 2018](http://img.youtube.com/vi/K9HQQQge0sQ/0.jpg)](https://www.youtube.com/watch?v=VFG1OJRB7Dc "CashCycle @ AngelHack Seattle Hackathon 2018")
+
+
 The judges asked about scalability. There’s a lot of bike-sharing companies in the US and other countries, so we could scale internationally.
-23 teams pitched and the judges deliberated…
+
+### 23 teams pitched and the judges deliberated…
+
+![](/images/13.png "")
 
 We thought we wouldn’t win anything, as we didn’t take the challenges from AWS and Agora.
 
 ## But we won!
 
+![](/images/14.png "")
+
 There’s no monetary prize or any equivalent for the runner-up. Still, it was a good experience and at least we got bragging rights. :)
 ## The Prize
+
+![](/images/15.png "")
 
 Code For A Cause Impact Award Challenge: Build technology that solves a social or environmental problem and positively impacts your local community.
 
 Code For A Cause Impact Award Prize: One Impact Award was given out at each event. At the end of the Global Hackathon Series, the top Impact Award projects are chosen by an expert judging panel including the Chan Zuckerberg Initiative and more. The top five teams receive an official invite into the HACKcelerator.
-List of Participants
+
+## List of Participants
+
+![](/images/16.png "")
 
 Notable creative Apps from other teams were:
 
