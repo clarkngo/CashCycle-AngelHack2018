@@ -271,7 +271,7 @@ We delivered the pitch with energy. We made sure that it had a flow and connecte
 Presentation flow: Problem -> Problem with Numbers -> Present the App -> discuss the App as a solution -> demo.
 
 
-[![CashCycle @ AngelHack Seattle Hackathon 2018](http://img.youtube.com/vi/K9HQQQge0sQ/0.jpg)](https://www.youtube.com/watch?v=VFG1OJRB7Dc "CashCycle @ AngelHack Seattle Hackathon 2018")
+[![CashCycle @ AngelHack Seattle Hackathon 2018](http://img.youtube.com/vi/VFG1OJRB7Dc/0.jpg)](https://www.youtube.com/watch?v=VFG1OJRB7Dc "CashCycle @ AngelHack Seattle Hackathon 2018")
 
 
 The judges asked about scalability. There’s a lot of bike-sharing companies in the US and other countries, so we could scale internationally.
